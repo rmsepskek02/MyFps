@@ -8,7 +8,6 @@ namespace MyFps
         #region Variables
         //action
         private Animator animator;
-        private Collider m_Collider;
         public AudioSource audioSource;
         #endregion
 
@@ -16,7 +15,6 @@ namespace MyFps
         {
             base.Start();
             animator = GetComponent<Animator>();
-            m_Collider = GetComponent<BoxCollider>();
             action = "Open The Door";
         }
 
@@ -50,6 +48,7 @@ namespace MyFps
         {
             //문이 열리는 액션
             GetComponent<Collider>().enabled = false;
+            m_Collider.SetActive(false);
             animator.SetBool("IsOpen", true);
             audioSource.Play();
         }

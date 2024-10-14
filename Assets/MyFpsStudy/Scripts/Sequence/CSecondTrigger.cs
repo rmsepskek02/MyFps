@@ -8,7 +8,11 @@ namespace MyFps
     public class CSecondTrigger : MonoBehaviour
     {
         public GameObject theDoor;
-        private 
+        public AudioSource doorBang;
+
+        public AudioSource jumpScare;
+        public GameObject theRobot;
+        public GameObject pistol;
         // Start is called before the first frame update
         void Start()
         {
@@ -23,12 +27,23 @@ namespace MyFps
 
         private void OnTriggerEnter(Collider other)
         {
+            if (pistol != null) return;
             FirstPersonController fpc = other.gameObject.GetComponent<FirstPersonController>();
             if (fpc != null)
             {
                 Animator anim = theDoor.GetComponent<Animator>();
                 anim.SetBool("IsOpen", true);
             }
+
+            StartCoroutine("DisplaySounds");
+        }
+
+        IEnumerator DisplaySounds()
+        {
+            doorBang.Play();
+            theRobot.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            jumpScare.Play();
         }
     }
 }

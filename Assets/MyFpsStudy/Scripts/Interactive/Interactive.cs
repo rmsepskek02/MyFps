@@ -15,6 +15,7 @@ namespace MyFps
         public TextMeshProUGUI actionText;
         [SerializeField] protected string action = "";
         public GameObject extraCross;
+        public GameObject m_Collider;
         // Start is called before the first frame update
         protected virtual void Start()
         {
