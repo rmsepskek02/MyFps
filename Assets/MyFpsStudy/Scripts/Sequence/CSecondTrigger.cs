@@ -13,6 +13,7 @@ namespace MyFps
         public AudioSource jumpScare;
         public GameObject theRobot;
         public GameObject pistol;
+        public Collider doorCollider;
         // Start is called before the first frame update
         void Start()
         {
@@ -44,6 +45,13 @@ namespace MyFps
             theRobot.SetActive(true);
             yield return new WaitForSeconds(1f);
             jumpScare.Play();
+            RobotController robot = theRobot.GetComponent<RobotController>();
+            if(robot != null)
+            {
+                robot.SetState(RobotState.R_Walk);
+            }
+            doorCollider.enabled = false;
+            transform.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }
