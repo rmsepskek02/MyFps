@@ -11,7 +11,7 @@ namespace MyFps
         R_Attack,
         R_Death,
     }
-    public class RobotController : MonoBehaviour
+    public class RobotController : MonoBehaviour, IDamageable
     {
         public GameObject thePlayer;
         private Animator animator;

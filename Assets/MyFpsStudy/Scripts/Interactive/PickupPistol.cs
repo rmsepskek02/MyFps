@@ -9,6 +9,8 @@ namespace MyFps
     {
         public GameObject realPistol;
         public GameObject arrow;
+        public GameObject ammoUI;
+
         // Start is called before the first frame update
         protected override void Start()
         {
@@ -43,6 +45,7 @@ namespace MyFps
 
         protected override void DoAtion()
         {
+            ammoUI.SetActive(true);
             realPistol.SetActive(true);
             arrow.SetActive(false);
             Destroy(gameObject);
