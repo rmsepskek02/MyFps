@@ -7,7 +7,7 @@ namespace MyFps
 {
     public abstract class Interactive : MonoBehaviour
     {
-        protected abstract void DoAtion();
+        protected abstract void DoAction();
         protected float theDistance;
 
         //action UI
@@ -16,6 +16,9 @@ namespace MyFps
         [SerializeField] protected string action = "";
         public GameObject extraCross;
         public GameObject m_Collider;
+
+        //true이면 Interactive 기능을 정지
+        protected bool unInteractive = false;
         // Start is called before the first frame update
         protected virtual void Start()
         {
@@ -39,7 +42,7 @@ namespace MyFps
                 {
                     HideActionUI();
 
-                    DoAtion();
+                    DoAction();
                 }
             }
             else

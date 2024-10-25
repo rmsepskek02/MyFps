@@ -13,6 +13,8 @@ namespace MyFps
     }
     public class RobotController : MonoBehaviour, IDamageable
     {
+        public AudioSource bgm01;
+        public AudioSource bgm02;
         public GameObject thePlayer;
         private Animator animator;
         // 로봇의 현태상태
@@ -107,6 +109,8 @@ namespace MyFps
         {
             isDeath = true;
             SetState(RobotState.R_Death);
+            bgm02.Stop();
+            bgm01.Play();
             Debug.Log("Die");
             transform.GetComponent<BoxCollider>().enabled = false;
         }

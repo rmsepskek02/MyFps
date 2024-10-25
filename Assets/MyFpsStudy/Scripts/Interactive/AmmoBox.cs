@@ -10,7 +10,7 @@ namespace MyFps
         public GameObject bulletUI;
         
         [SerializeField] private int giveBullet = 7;
-        protected override void DoAtion()
+        protected override void DoAction()
         {
             Debug.Log("탄환 7개를 지급 했습니다");
             m_Collider.SetActive(false);

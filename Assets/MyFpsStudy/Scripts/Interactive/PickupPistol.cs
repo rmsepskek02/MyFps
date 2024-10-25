@@ -43,7 +43,7 @@ namespace MyFps
             base.HideActionUI();
         }
 
-        protected override void DoAtion()
+        protected override void DoAction()
         {
             ammoUI.SetActive(true);
             realPistol.SetActive(true);

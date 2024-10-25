@@ -10,7 +10,7 @@ namespace MyFps
         public GameObject theDoor;
         public AudioSource doorBang;
 
-        public AudioSource jumpScare;
+        public AudioSource bgm02;
         public GameObject theRobot;
         public GameObject pistol;
         public Collider doorCollider;
@@ -44,7 +44,7 @@ namespace MyFps
             doorBang.Play();
             theRobot.SetActive(true);
             yield return new WaitForSeconds(1f);
-            jumpScare.Play();
+            bgm02.Play();
             RobotController robot = theRobot.GetComponent<RobotController>();
             if(robot != null)
             {

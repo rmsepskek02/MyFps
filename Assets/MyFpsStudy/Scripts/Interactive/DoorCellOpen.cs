@@ -44,7 +44,7 @@ namespace MyFps
         {
             base.HideActionUI();
         }
-        protected override void DoAtion()
+        protected override void DoAction()
         {
             //문이 열리는 액션
             GetComponent<Collider>().enabled = false;

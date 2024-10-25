@@ -5,10 +5,17 @@ using UnityEngine;
 
 namespace MyFps
 {
+    //∆€¡Ò æ∆¿Ã≈€ »πµÊ ø©∫Œ
+    public enum PuzzleKey
+    {
+        ROOM01_KEY,
+        MAX_KEY             //∆€¡Ò æ∆¿Ã≈€ ∞πºˆ
+    }
     public class PlayerStats : Singleton<PlayerStats>
     {
         private int bulletCount;
         public TextMeshProUGUI bulletText;
+        private bool[] puzzleKeys;
         public int BulletCount
         {
             get { return bulletCount; }
@@ -46,6 +53,17 @@ namespace MyFps
         public void IncreaseBullet()
         {
             BulletCount++;
+        }
+        //∆€¡Ò æ∆¿Ã≈€ »πµÊ
+        public void AcquirePuzzleItem(PuzzleKey key)
+        {
+            puzzleKeys[(int)key] = true;
+        }
+
+        //∆€¡Ò æ∆¿Ã≈€¿ª º“¡ˆ ø©∫Œ
+        public bool HasPuzzleItem(PuzzleKey key)
+        {
+            return puzzleKeys[(int)key];
         }
     }
 }

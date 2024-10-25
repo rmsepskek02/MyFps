@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MyFps
@@ -25,12 +23,12 @@ namespace MyFps
                 Destroy(this.gameObject);
                 return;
             }
-            instance = (T)this;
+            instance = (T)this;            
         }
 
         protected virtual void OnDestroy()
         {
-            if (instance == this)
+            if(instance == this)
             {
                 instance = null;
             }
