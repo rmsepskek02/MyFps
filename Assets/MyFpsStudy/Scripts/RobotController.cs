@@ -98,7 +98,6 @@ namespace MyFps
         }
         public void TakeDamage(float damage)
         {
-            Debug.Log("Robot hp = " + currentHealth);
             currentHealth -= damage;
             if (currentHealth <= 0 && !isDeath)
             {

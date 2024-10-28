@@ -9,12 +9,13 @@ namespace MyFps
     public enum PuzzleKey
     {
         ROOM01_KEY,
+        LEFTEYE_KEY,
+        RIGHTEYE_KEY,
         MAX_KEY             //∆€¡Ò æ∆¿Ã≈€ ∞πºˆ
     }
     public class PlayerStats : Singleton<PlayerStats>
     {
         private int bulletCount;
-        public TextMeshProUGUI bulletText;
         private bool[] puzzleKeys;
         public int BulletCount
         {
@@ -26,12 +27,13 @@ namespace MyFps
         {
             BulletCount = 0;
             DontDestroyOnLoad(this.gameObject);
+            puzzleKeys = new bool[(int)PuzzleKey.MAX_KEY];
         }
 
         // Update is called once per frame
         void Update()
         {
-            bulletText.text = $"{BulletCount}";
+
         }
         public void SetBullet(int count)
         {

@@ -17,7 +17,7 @@ namespace MyFps
         void Update()
         {
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
             {
                 distanceFromTarget = hit.distance;
                 toTarget = distanceFromTarget;

@@ -26,12 +26,12 @@ namespace MyFps
         }
 
         // Update is called once per frame
-        protected virtual void Update()
+        void Update()
         {
             theDistance = PlayerCasting.distanceFromTarget;
         }
         //마우스를 가져가면 액션 UI를 보여준다
-        protected virtual void OnMouseOver()
+        void OnMouseOver()
         {
             //거리가 2이하 일때
             if (theDistance <= 2f)
@@ -52,23 +52,24 @@ namespace MyFps
         }
 
         //마우스가 벗어나면 액션 UI를 감춘다
-        protected virtual void OnMouseExit()
+        void OnMouseExit()
         {
             HideActionUI();
         }
 
-        protected virtual void ShowActionUI()
+        void ShowActionUI()
         {
             actionUI.SetActive(true);
             actionText.text = action;
             extraCross.SetActive(true);
         }
 
-        protected virtual void HideActionUI()
+        void HideActionUI()
         {
             actionUI.SetActive(false);
             actionText.text = "";
             extraCross.SetActive(false);
         }
     }
+
 }

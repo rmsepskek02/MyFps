@@ -15,7 +15,11 @@ namespace MyFps
             Debug.Log("탄환 7개를 지급 했습니다");
             m_Collider.SetActive(false);
             PlayerStats.Instance.SetBullet(giveBullet);
-            for(var i = 0; i < giveBullet; i++)
+            foreach (Transform child in bulletsUI)
+            {
+                Destroy(child.gameObject);
+            }
+            for (var i = 0; i < giveBullet; i++)
             {
                 Instantiate(bulletUI, bulletsUI);
             }
@@ -25,12 +29,6 @@ namespace MyFps
         protected override void Start()
         {
             action = "Pick Up Ammo Box";
-        }
-
-        // Update is called once per frame
-        protected override void Update()
-        {
-
         }
     }
 }

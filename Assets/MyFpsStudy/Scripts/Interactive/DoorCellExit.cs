@@ -21,7 +21,6 @@ namespace MyFps
             //참조
             animator = GetComponent<Animator>();
         }
-
         protected override void DoAction()
         {
             //1.문여는 애니메이션
@@ -30,7 +29,7 @@ namespace MyFps
 
             creakyDoor.Play();
 
-            ChangeScene();   
+            ChangeScene();
         }
 
         void ChangeScene()

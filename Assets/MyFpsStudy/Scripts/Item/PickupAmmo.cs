@@ -14,6 +14,10 @@ namespace MyFps
         {
             //탄환 7개 지급
             PlayerStats.Instance.SetBullet(giveBullet);
+            foreach (Transform child in bulletsUI)
+            {
+                Destroy(child.gameObject);
+            }
             for (var i = 0; i < giveBullet; i++)
             {
                 Instantiate(bulletUI, bulletsUI);

@@ -6,7 +6,7 @@ namespace MyFps
     {
         #region Variables
         public SceneFader fader;
-        [SerializeField] private string loadToScene = "PlaySceneStudy";
+        [SerializeField] private string loadToScene = "MainScene01";
 
         private AudioManager audioManager;
         #endregion
@@ -38,7 +38,7 @@ namespace MyFps
 
         public void Options()
         {
-            audioManager.PlayBgm("TestBGM");
+            audioManager.PlayBgm("PlayBgm");
 
             Debug.Log("Show Options");
         }
