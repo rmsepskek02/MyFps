@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace MyFps
 {
-
-    public class GEnemyZoneInTrigger : MonoBehaviour
+    public class HEnemyZoneOutTrigger : MonoBehaviour
     {
         public Transform gunMan;
-        public GameObject enemyZoneOut;
+        GunEnemy gunEnemy;
+        public GameObject enemyZoneIn;
         // Start is called before the first frame update
         void Start()
         {
-
+            gunEnemy = gunMan.GetComponent<GunEnemy>();
         }
 
         // Update is called once per frame
@@ -25,8 +26,8 @@ namespace MyFps
         {
             if (other.tag == "Player")
             {
-                if (gunMan != null)
-                    gunMan.GetComponent<GunEnemy>().SetState(EnemyState.E_Chase);
+                if(gunMan != null)
+                    gunEnemy.GoStartPosition();
             }
         }
 
@@ -35,7 +36,7 @@ namespace MyFps
             if (other.tag == "Player")
             {
                 this.gameObject.SetActive(false);
-                enemyZoneOut.SetActive(true);
+                enemyZoneIn.SetActive(true);
             }
         }
     }

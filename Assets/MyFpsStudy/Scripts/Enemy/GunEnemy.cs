@@ -23,6 +23,7 @@ namespace MyFps
         // 로봇의 이전상태
         private EnemyState beforeState;
         [SerializeField] private float maxHealth = 20f;
+        [SerializeField] private float detectRange = 20f;
         private float currentHealth;
         private bool isDeath;
 
@@ -94,6 +95,9 @@ namespace MyFps
 
             Vector3 dir = thePlayer.transform.position - transform.position;
             float distance = Vector3.Distance(thePlayer.transform.position, transform.position);
+            bool isAiming = distance <= detectRange;
+
+
             if (distance <= atkRange)
             {
                 SetState(EnemyState.E_Attack);
@@ -104,6 +108,10 @@ namespace MyFps
                 case EnemyState.E_Idle:
                     break;
                 case EnemyState.E_Walk:
+                    if (isAiming)
+                    {
+                        SetState(EnemyState.E_Chase);
+                    }
                     // 도착 판정
                     if (agent.remainingDistance <= 0.2f)
                     {
@@ -124,7 +132,14 @@ namespace MyFps
                 case EnemyState.E_Death:
                     break;
                 case EnemyState.E_Chase:
-                    agent.SetDestination(thePlayer.position);
+                    if (!isAiming)
+                    {
+                        GoStartPosition();
+                    }
+                    else
+                    {
+                        agent.SetDestination(thePlayer.position);
+                    }
                     break;
             }
         }
@@ -144,13 +159,27 @@ namespace MyFps
                 Die();
             }
         }
+        public void GoStartPosition()
+        {
+            if (isDeath) return;
 
+            SetState(EnemyState.E_Walk);
+            nowWayPoints = 0;
+            agent.SetDestination(wayPoints[0].position);
+        }
         private void Die()
         {
-            isDeath = true;
-            Debug.Log("GUNMAN DIE");
             SetState(EnemyState.E_Death);
+            isDeath = true;
             transform.GetComponent<BoxCollider>().enabled = false;
+            Destroy(gameObject, 3f);
+        }
+
+        void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            // 기즈모로 구 그리기
+            Gizmos.DrawWireSphere(transform.position, detectRange);
         }
     }
 }
