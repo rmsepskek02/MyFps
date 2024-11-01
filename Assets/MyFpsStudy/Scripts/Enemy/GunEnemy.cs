@@ -27,7 +27,7 @@ namespace MyFps
         private float currentHealth;
         private bool isDeath;
 
-        [SerializeField] private float moveSpeed = 5f;
+        //[SerializeField] private float moveSpeed = 5f;
 
         [SerializeField] private float atkRange = 1.5f;
         [SerializeField] private float atkDamage = 5f;

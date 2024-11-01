@@ -8,7 +8,7 @@ namespace MySample
     public class MoveWall : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 1f;
-        [SerializeField] private float moveTime = 1f;
+        //[SerializeField] private float moveTime = 1f;
         private float countDown = 0f;
         [SerializeField] private float dir = 1f;
         // Start is called before the first frame update
