@@ -58,8 +58,8 @@ namespace MyFps
             Time.timeScale = 1f;
 
             //씬 종료 처리 ...
-            AudioManager.Instance.StopBgm();
-
+            //AudioManager.Instance.StopBgm();
+            SaveLoad.SaveData();
             fader.FadeTo(loadToScene);
         }
     }

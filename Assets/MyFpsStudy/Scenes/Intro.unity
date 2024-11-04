@@ -676,7 +676,7 @@ Transform:
   m_GameObject: {fileID: 494071913}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 324.12634, y: 1.5371226, z: 393.04877}
+  m_LocalPosition: {x: 323.65552, y: 1.5371226, z: 392.99918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -821,7 +821,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726345888}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.031344187, y: -0.99868023, z: -0.0008580867, w: -0.040676817}
+  m_LocalRotation: {x: 0.03502721, y: -0.99731535, z: 0.000109995, w: -0.064305656}
   m_LocalPosition: {x: 324.93826, y: 1.5371226, z: 383.0818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1404,7 +1404,7 @@ Transform:
   m_GameObject: {fileID: 1367424620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 324.12634, y: 1.5371226, z: 393.04877}
+  m_LocalPosition: {x: 323.65552, y: 1.5371226, z: 392.99918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2031,7 +2031,7 @@ MonoBehaviour:
     roll: 0
   - position: {x: -43.299168, y: 20.667648, z: 115.72421}
     roll: 0
-  - position: {x: -0.9124527, y: 29.366734, z: 166.2244}
+  - position: {x: -39.411377, y: 25.599031, z: 144.00735}
     roll: 0
   - position: {x: 16.935015, y: 30.537828, z: 180.70056}
     roll: 0
@@ -2374,6 +2374,8 @@ MonoBehaviour:
   cart: {fileID: 726345889}
   wayPointIndex: 0
   virtualCamera: {fileID: 494071913}
+  house: {fileID: 3016839064039528115}
+  rotationSpeed: 1
 --- !u!1 &2119406339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,7 +3551,6 @@ SceneRoots:
   - {fileID: 1296663738}
   - {fileID: 2119406342}
   - {fileID: 1398142399}
-  - {fileID: 2492222915545222153}
   - {fileID: 494071915}
   - {fileID: 1756407432}
   - {fileID: 726345890}
@@ -3558,3 +3559,4 @@ SceneRoots:
   - {fileID: 1591082403}
   - {fileID: 1957452903}
   - {fileID: 1691321818}
+  - {fileID: 2492222915545222153}

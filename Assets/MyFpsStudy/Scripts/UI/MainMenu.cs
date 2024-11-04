@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MyFps
@@ -8,8 +9,9 @@ namespace MyFps
     {
         #region Variables
         public SceneFader fader;
-        [SerializeField] private string loadToScene = "MainScene01";
-
+        [SerializeField] private string loadToScene = "Intro";
+        private string sceneKey = "PlayScene";
+        //private int sceneIndex = 0;
         private AudioManager audioManager;
         public GameObject mainMenuUI;
         public GameObject optionUI;
@@ -18,14 +20,17 @@ namespace MyFps
         public Slider sfxSlider;
         public AudioMixer audioMixer;
         public GameObject creditUI;
+        public GameObject loadButton;
         #endregion
 
         private void Start()
         {
+            //게임 저장데이터, 저장된 옵션값 불러오기
+            //LoadOptions();
+            InitGameData();
+            Debug.Log($"로드 SceneNumber = {PlayerStats.Instance.SceneNumber}");
             //bgmSlider.onValueChanged.AddListener(SetBgmVolume);
             //sfxSlider.onValueChanged.AddListener(SetSfxVolume);
-            //게임 저장데이터, 저장된 옵션값 불러오기
-            LoadOptions();
             //씬 페이드인 효과
             fader.FromFade();
 
@@ -34,8 +39,22 @@ namespace MyFps
 
             //Bgm 플레이
             audioManager.PlayBgm("MenuBgm");
-        }
 
+            //sceneIndex = PlayerPrefs.GetInt(sceneKey, 0); // 예시로 int형 데이터를 가져옴
+
+            if (PlayerStats.Instance.SceneNumber > 0)
+            {
+                loadButton.SetActive(true);
+                Debug.Log("데이터가 존재합니다.");
+                // 데이터를 불러와 사용할 수 있습니다.
+            }
+            else
+            {
+                loadButton.SetActive(false);
+                Debug.Log("데이터가 존재하지 않습니다.");
+                // 필요한 경우 초기값을 설정하거나 다른 작업을 수행합니다.
+            }
+        }
         public void NewGame()
         {
             audioManager.Stop(audioManager.BgmSound);            
@@ -46,7 +65,8 @@ namespace MyFps
 
         public void LoadGame()
         {
-            Debug.Log("Goto LoadGame");
+            
+            SceneManager.LoadScene(PlayerStats.Instance.SceneNumber);
         }
 
         public void Options()
@@ -68,6 +88,7 @@ namespace MyFps
         public void QuitGame()
         {
             Debug.Log("Quit Game");
+            SaveLoad.DeleteFile();
             Application.Quit();
         }
 
@@ -82,7 +103,6 @@ namespace MyFps
         public void SetBgmVolume(float value)
         {
             audioMixer.SetFloat("BgmVolume", value);
-            Debug.Log(value);
         }
 
         public void SetSfxVolume(float value)
@@ -103,6 +123,16 @@ namespace MyFps
             bgmSlider.value = bgmVolume;
             SetSfxVolume(sfxVolume);
             sfxSlider.value = sfxVolume;
+        }
+
+        private void InitGameData()
+        {
+            //게임설정값, 저장된 옵션값 불러오기
+            LoadOptions();
+
+            //게임 플레이 데이터 로드
+            PlayData playData = SaveLoad.LoadData();
+            PlayerStats.Instance.PlayerStatInit(playData);
         }
     }
 }

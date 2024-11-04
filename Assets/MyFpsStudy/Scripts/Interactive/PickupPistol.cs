@@ -20,9 +20,13 @@ namespace MyFps
 
         protected override void DoAction()
         {
-            ammoUI.SetActive(true);
-            realPistol.SetActive(true);
             arrow.SetActive(false);
+
+            PlayerStats.Instance.SetHasGun(true);
+            Debug.Log("HASGUN = " + PlayerStats.Instance.HasGun);
+            realPistol.SetActive(true);
+            ammoUI.SetActive(true);
+
             Destroy(gameObject);
         }
     }

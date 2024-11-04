@@ -145,10 +145,10 @@ namespace MyFps
         }
         public void Attack()
         {
-            IDamageable ida = thePlayer.GetComponent<IDamageable>();
-            if (ida != null)
+            PlayerController pc = thePlayer.GetComponent<PlayerController>();
+            if (pc != null)
             {
-                ida.TakeDamage(atkDamage);
+                pc.TakeDamage(atkDamage);
             }
         }
         public void TakeDamage(float damage)

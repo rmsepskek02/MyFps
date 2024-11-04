@@ -52,12 +52,12 @@ namespace MyFps
 
         IEnumerator StartIntro()
         {
+            isArrive[wayPointIndex] = true;
+            wayPointIndex++;
             fader.FromFade();
             AudioManager.Instance.PlayBgm("IntroBgm");
 
             yield return new WaitForSeconds(1f);
-            isArrive[wayPointIndex] = true;
-            wayPointIndex++;
             cameraAnim.SetTrigger("ArroundTrigger");
 
             yield return new WaitForSeconds(3f);
@@ -68,19 +68,23 @@ namespace MyFps
             isArrive[wayPointIndex] = true;
             wayPointIndex++;
             cart.m_Speed = 0f;
-            cameraAnim.SetTrigger("ArroundTrigger");
-
             int nowIndex = wayPointIndex - 1;
             switch (nowIndex)
             {
+                case 0:
+                    cameraAnim.SetTrigger("ArroundTrigger");
+                    break;
                 case 1:
                     textUI.SetActive(true);
+                    cameraAnim.SetTrigger("ArroundTrigger");
                     break;
                 case 2:
                     textUI.SetActive(false);
+                    cameraAnim.SetTrigger("ArroundTrigger");
                     break;
                 case 3:
                     houseLight.SetActive(true);
+                    cameraAnim.SetTrigger("HouseTrigger");
                     break;
             }
 

@@ -15,17 +15,37 @@ namespace MyFps
     }
     public class PlayerStats : Singleton<PlayerStats>
     {
-        private int bulletCount;
+        private int sceneNumber;
+        public int SceneNumber
+        {
+            get { return sceneNumber; }
+            set { sceneNumber = value; }
+        }
+
+        private int nowSceneNumber;
+        public int NowSceneNumber
+        {
+            get { return nowSceneNumber; }
+            set { nowSceneNumber = value; }
+        }
+
+        [SerializeField] private int bulletCount;
         private bool[] puzzleKeys;
         public int BulletCount
         {
             get { return bulletCount; }
-            private set { bulletCount = value; }
+            set { bulletCount = value; }
+        }
+        private bool hasGun;
+        public bool HasGun
+        {
+            get { return hasGun; }
+            private set { hasGun = value; }
         }
         // Start is called before the first frame update
         void Start()
         {
-            BulletCount = 0;
+            //BulletCount = 0;
             DontDestroyOnLoad(this.gameObject);
             puzzleKeys = new bool[(int)PuzzleKey.MAX_KEY];
         }
@@ -66,6 +86,27 @@ namespace MyFps
         public bool HasPuzzleItem(PuzzleKey key)
         {
             return puzzleKeys[(int)key];
+        }
+        public bool SetHasGun(bool value)
+        {
+            HasGun = value;
+            return value;
+        }
+
+        public void PlayerStatInit(PlayData playData)
+        {
+            if(playData != null)
+            {
+                SceneNumber = playData.sceneNumber;
+                BulletCount = playData.bulletCount;
+                hasGun = playData.hasGun;
+            }
+            else // 저장된 데이터가 없을때
+            {
+                sceneNumber = 0;
+                bulletCount = 0;
+                hasGun = false;
+            }
         }
     }
 }

@@ -15,6 +15,9 @@ namespace MyFps
         public AudioSource hurt01;
         public AudioSource hurt02;
         public AudioSource hurt03;
+        public GameObject realPistol;
+        private string loadToScene = "GameOver";
+        public SceneFader fader;
         // Start is called before the first frame update
         void Start()
         {
@@ -26,6 +29,11 @@ namespace MyFps
             for (var i = 0; i < PlayerStats.Instance.BulletCount; i++)
             {
                 Instantiate(bulletUI, bulletsUI);
+            }
+
+            if (PlayerStats.Instance.HasGun)
+            {
+                realPistol.SetActive(true);
             }
         }
 
@@ -52,11 +60,13 @@ namespace MyFps
         {
             isDeath = true;
             Debug.Log("GAMEOVER");
+            fader.FadeTo(loadToScene);
         }
 
         IEnumerator DamageEffect()
         {
             damageFlash.SetActive(true);
+            CinemachineShake.Instance.ShakeCamera(1f, 1f);
             int randNumber = Random.Range(1, 4);
             if (randNumber == 1)
             {

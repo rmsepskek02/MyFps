@@ -3159,6 +3159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 179940177}
   - component: {fileID: 179940178}
+  - component: {fileID: 179940179}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -3196,6 +3197,18 @@ MonoBehaviour:
   fader: {fileID: 1323067865}
   thePlayer: {fileID: 1085764698}
   textBox: {fileID: 235506743}
+--- !u!114 &179940179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179940176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3c1e98b1f7f724abefb04a1019f842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &186847967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446242614063610, guid: 2c614e8c420ebdd4896ce459dc3d5fe3,
@@ -4158,7 +4171,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1011950354}
         m_TargetAssemblyTypeName: MyFps.PauseUI, Assembly-CSharp
         m_MethodName: Menu
         m_Mode: 1
@@ -4668,6 +4681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383059841}
   - component: {fileID: 383059840}
+  - component: {fileID: 383059842}
   m_Layer: 0
   m_Name: PlayerFollowCamera
   m_TagString: Untagged
@@ -4730,6 +4744,19 @@ Transform:
   - {fileID: 890274690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383059842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383059839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b7c35fa377e154eac16c5bff3cd6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequency: 1
 --- !u!1001 &384786065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5354,6 +5381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473863391074235117, guid: 5c43eed09c55cfd41ae800551cbf5a3d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8488338889797138971, guid: 5c43eed09c55cfd41ae800551cbf5a3d,
         type: 3}
@@ -10163,7 +10195,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1011950354}
         m_TargetAssemblyTypeName: MyFps.PauseUI, Assembly-CSharp
         m_MethodName: Toggle
         m_Mode: 1
@@ -10410,9 +10442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
-  m_PivotOffset: {x: 0, y: 0, z: 1}
-  m_AmplitudeGain: 0.5
-  m_FrequencyGain: 0.3
+  m_PivotOffset: {x: 0, y: 0, z: 0.5}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
   mNoiseOffsets: {x: -451.37964, y: 684.7062, z: 648.0488}
 --- !u!114 &890274693
 MonoBehaviour:
@@ -27322,6 +27354,8 @@ MonoBehaviour:
   hurt01: {fileID: 839591745}
   hurt02: {fileID: 636923733}
   hurt03: {fileID: 1269368847}
+  realPistol: {fileID: 790017464}
+  fader: {fileID: 1323067865}
 --- !u!1001 &1090180935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28891,6 +28925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314af57b76936ff4ea7875481f3f7455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletCount: 0
 --- !u!1001 &1266282309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53776,7 +53811,6 @@ MonoBehaviour:
   thePlayer: {fileID: 0}
   maxHealth: 20
   detectRange: 10
-  moveSpeed: 5
   atkRange: 1.5
   atkDamage: 5
   wayPoints:

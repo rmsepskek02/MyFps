@@ -10,7 +10,7 @@ namespace MyFps
         public Button retryButton;
         public Button quitButton;
         public SceneFader fader;
-        [SerializeField] private string loadToScene = "PlaySceneStudy";
+        [SerializeField] private string loadToScene = "MainMenu";
         // Start is called before the first frame update
         void Start()
         {
@@ -29,7 +29,8 @@ namespace MyFps
         }
         public void OnClickQuitButton()
         {
-
+            SaveLoad.DeleteFile();
+            Application.Quit();
         }
     }
 }
